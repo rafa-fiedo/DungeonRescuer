@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/lights/basic_circle.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/weapons/stuffs.png" type="Texture" id=4]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0397351, 0.728477 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.584314 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5, 6 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 7
+script = ExtResource( 3 )
+
+[node name="Weapon" type="Sprite" parent="."]
+position = Vector2( 1, -8 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -8 )
+hframes = 2
+
+[node name="FireLight" type="Light2D" parent="Weapon"]
+visible = false
+position = Vector2( -1.19209e-07, -19 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+texture_scale = 2.0
+mode = 2
+shadow_enabled = true
+
+[node name="HolyLight" type="Light2D" parent="Weapon"]
+position = Vector2( 0, -19 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+texture_scale = 4.5
+mode = 2
+shadow_enabled = true
+
+[node name="HolyEffect" type="CPUParticles2D" parent="Weapon"]
+position = Vector2( 0, -19 )
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2( 0, 15 )
+color_ramp = SubResource( 1 )
+hue_variation_random = 0.4
+
+[node name="FireEffect" type="CPUParticles2D" parent="Weapon"]
+visible = false
+position = Vector2( 0, -19 )
+amount = 10
+lifetime = 1.5
+speed_scale = 0.3
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2( 15, 15 )
+orbit_velocity = 1.5
+color = Color( 1, 0.239216, 0.14902, 1 )
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="Character" index="0"]
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, -6 )
+shape = SubResource( 2 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.278431, 0.278431, 0.278431, 1 )
+
+[editable path="Character"]

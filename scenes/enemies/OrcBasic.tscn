@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/ogre_basic.png" type="Texture" id=2]
+[ext_resource path="res://resources/lights/basic_circle.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Enemy.gd" type="Script" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.93307, 6.72125 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 31
+script = ExtResource( 4 )
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1, 0 )
+
+[node name="Sprite" parent="Character" index="0"]
+material = SubResource( 3 )
+position = Vector2( 1, -16 )
+texture = ExtResource( 2 )
+frame = 3
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 1.83516, -8.56411 )
+texture = ExtResource( 3 )
+color = Color( 0.231373, 0.309804, 0.219608, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.85437, -6.83501 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+position = Vector2( -2, -7 )
+enabled = true
+cast_to = Vector2( -7, 0 )
+collision_mask = 14
+
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2( 2, -7 )
+enabled = true
+cast_to = Vector2( 7, 0 )
+collision_mask = 14
+
+[editable path="Character"]
