@@ -15,6 +15,7 @@ extents = Vector2( 5, 6 )
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 7
 script = ExtResource( 3 )
+is_fire_use = true
 
 [node name="Weapon" type="Sprite" parent="."]
 position = Vector2( 1, -8 )

@@ -5,11 +5,11 @@
 [ext_resource path="res://resources/lights/basic_circle.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=4]
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.93307, 6.72125 )
+extents = Vector2( 5, 7 )
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
@@ -20,10 +20,8 @@ script = ExtResource( 4 )
 position = Vector2( -1, 0 )
 
 [node name="Sprite" parent="Character" index="0"]
-material = SubResource( 3 )
-position = Vector2( 1, -16 )
+material = SubResource( 1 )
 texture = ExtResource( 2 )
-frame = 3
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
@@ -32,10 +30,8 @@ texture = ExtResource( 3 )
 color = Color( 0.231373, 0.309804, 0.219608, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0.85437, -6.83501 )
+position = Vector2( 0, -8 )
 shape = SubResource( 2 )
-disabled = true
 
 [node name="RayLeft" type="RayCast2D" parent="."]
 position = Vector2( -2, -7 )

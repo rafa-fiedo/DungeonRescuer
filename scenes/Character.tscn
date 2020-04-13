@@ -1,10 +1,54 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/mage_animations.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Character.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Hit"
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -2, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.7 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, 0, 0, 0, 0, -90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -28,8 +72,32 @@ tracks/1/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.05, 0.1, 0.2, 0.3 )
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -54,9 +122,32 @@ tracks/1/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ) ]
+}
 
-[sub_resource type="Animation" id=3]
-resource_name = "Run"
+[sub_resource type="Animation" id=4]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -81,17 +172,43 @@ tracks/1/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="Character" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -2 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -14 )
 hframes = 9
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Hit = SubResource( 1 )
-anims/Idle = SubResource( 2 )
-anims/Run = SubResource( 3 )
+anims/Die = SubResource( 1 )
+anims/Hit = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Run = SubResource( 4 )

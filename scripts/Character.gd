@@ -15,3 +15,10 @@ func play_animation(new_animation):
 		return
 		
 	$Anim.play(new_animation)
+	
+func set_active(value):
+	set_process(value)
+	set_process_input(value)
+
+func die_animation():
+	$Anim.play("Die")

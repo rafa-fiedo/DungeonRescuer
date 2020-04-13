@@ -1,0 +1,174 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://dialogue/Interface.gd" type="Script" id=2]
+[ext_resource path="res://resources/theme/panel/panel_rect.png" type="Texture" id=3]
+[ext_resource path="res://resources/theme/font/Lato/Lato-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/theme/wait_arrow.png" type="Texture" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
+
+[sub_resource type="DynamicFont" id=3]
+size = 10
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 1
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("NinePatchRect/TextureRect:self_modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("NinePatchRect/TextureRect:self_modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("NinePatchRect/TextureRect:self_modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("NinePatchRect/TextureRect:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=6]
+length = 1.5
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("NinePatchRect/TextureRect:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.9 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("NinePatchRect/TextureRect:rect_position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 200, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0, 192, -0.25, 0, 0.25, 0, 205, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 1.1, 1.4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("NinePatchRect/TextureRect:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+
+[node name="Interface" type="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -108.0
+margin_top = -95.0
+margin_right = 101.0
+margin_bottom = -30.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+light_mask = 4
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_right = 11.0
+margin_bottom = 8.0
+texture = ExtResource( 3 )
+patch_margin_left = 7
+patch_margin_top = 6
+patch_margin_right = 7
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+light_mask = 4
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 4.0
+margin_right = -6.0
+margin_bottom = -4.0
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.858824, 0.858824, 0.858824, 1 )
+bbcode_enabled = true
+bbcode_text = "Test text, moved to the script"
+text = "Test text, moved to the script"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+light_mask = 4
+material = SubResource( 4 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -16.0
+margin_right = -19.0
+margin_bottom = -4.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterSpeed" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "PressKey"
+anims/Idle = SubResource( 5 )
+anims/PressKey = SubResource( 6 )
+[connection signal="timeout" from="CharacterSpeed" to="." method="_on_CharacterSpeed_timeout"]

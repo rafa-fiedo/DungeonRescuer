@@ -1,0 +1,10 @@
+[
+  [
+    {"name": "NPC", "text": "Hello friend... This is just text sample which you can read. I think 3 lines of text is enough... but let's try add more text?"},
+    {"name": "NPC", "text": "This is second dialogue of the test file"},
+    {"name": "NPC", "text": "Here you have the last dialogue of the test file. Hope you have a great day and enjoy your live, cause you're awesome <3"},
+  ],
+  [
+    {"name": "NPC", "text": "Let's test this scene!"},
+  ]
+]

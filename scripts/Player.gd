@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var fireball = load("res://scenes/spells/Fireball.tscn")
 
+export(bool) var is_fire_use = false
+
 enum Spell {HOLY, FIRE}
 
 var speed = Vector2(48, 48)
@@ -18,15 +20,14 @@ func _ready():
 	offset_weapon_point = $Weapon.offset
 	start_fire_light_size = $Weapon/FireLight.texture_scale
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	set_sprites() # set marker, char sprite and collision boxes
-	
 	var direction = get_direction()
 	velocity = speed * direction
 	
 	spells_logic()
 	$Character.set_moving_animation(velocity)
-	move_and_slide(velocity)
+	velocity = move_and_slide(velocity)
 	
 func get_direction():
 	return Vector2(
@@ -55,7 +56,7 @@ func spells_logic():
 		$Weapon/HolyEffect.emitting = true
 		$Weapon/HolyEffect.visible = true
 		$Weapon/HolyLight.visible = true
-	elif Input.is_action_just_pressed("spell_2"):
+	elif Input.is_action_just_pressed("spell_2") and is_fire_use:
 		if $Weapon/FireEffect.visible:
 			return
 		turn_off_all_spells()
@@ -100,4 +101,9 @@ func set_sprites():
 	else:
 		$Character.get_node("Sprite").flip_h = true
 		$CollisionShape2D.position.x = -1
+		
+func set_active(active):
+	set_physics_process(active)
+	set_process(active)
+	set_process_input(active)
 

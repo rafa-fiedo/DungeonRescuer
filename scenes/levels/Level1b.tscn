@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/enviroment/BasicTilemap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://dialogue/DialoguePlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enviroment/Stairs.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/levels/Level1b.gd" type="Script" id=6]
+[ext_resource path="res://scenes/enviroment/Switch.tscn" type="PackedScene" id=7]
+
+[node name="Level1b" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="BasicTilemap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 65546, 0, 0, 65547, 0, 1, 65548, 0, 1, 65549, 0, 2, 131082, 0, 65536, 131083, 0, 65537, 131084, 0, 65537, 131085, 0, 65538, 196618, 0, 65536, 196619, 0, 196618, 196620, 0, 65537, 196621, 0, 65538, 262154, 0, 65536, 262155, 0, 65537, 262156, 0, 65537, 262157, 0, 65538, 327690, 0, 65536, 327691, 0, 65537, 327692, 0, 65537, 327693, 0, 65538, 393226, 0, 65536, 393227, 0, 65537, 393228, 0, 65537, 393229, 0, 65538, 458762, 0, 65536, 458763, 0, 65537, 458764, 0, 65537, 458765, 0, 65538, 524298, 0, 65536, 524299, 0, 65537, 524300, 0, 262154, 524301, 0, 65538, 589834, 0, 65536, 589835, 0, 65537, 589836, 0, 65537, 589837, 0, 65538, 655364, 0, 0, 655365, 0, 1, 655366, 0, 1, 655367, 0, 1, 655368, 0, 1, 655369, 0, 1, 655370, 0, 65541, 655371, 0, 196618, 655372, 0, 65537, 655373, 0, 65540, 655374, 0, 1, 655375, 0, 1, 655376, 0, 1, 655377, 0, 1, 655378, 0, 1, 655379, 0, 1, 655380, 0, 1, 655381, 0, 1, 655382, 0, 1, 655383, 0, 2, 720900, 0, 65536, 720901, 0, 65537, 720902, 0, 65537, 720903, 0, 65537, 720904, 0, 65537, 720905, 0, 65537, 720906, 0, 65537, 720907, 0, 65537, 720908, 0, 65537, 720909, 0, 65537, 720910, 0, 65537, 720911, 0, 65537, 720912, 0, 65537, 720913, 0, 65537, 720914, 0, 65537, 720915, 0, 65537, 720916, 0, 65537, 720917, 0, 65537, 720918, 0, 65537, 720919, 0, 65538, 786436, 0, 131072, 786437, 0, 131073, 786438, 0, 131073, 786439, 0, 131073, 786440, 0, 131073, 786441, 0, 131073, 786442, 0, 131073, 786443, 0, 131073, 786444, 0, 131073, 786445, 0, 131073, 786446, 0, 131073, 786447, 0, 131073, 786448, 0, 131073, 786449, 0, 131073, 786450, 0, 131073, 786451, 0, 131073, 786452, 0, 131073, 786453, 0, 131073, 786454, 0, 131073, 786455, 0, 131074 )
+
+[node name="Stairs" parent="." instance=ExtResource( 5 )]
+position = Vector2( 200, 40 )
+
+[node name="Switch" parent="." instance=ExtResource( 7 )]
+position = Vector2( 344, 184 )
+
+[node name="NPC" parent="." instance=ExtResource( 2 )]
+position = Vector2( 184, 96 )
+is_start_left = false
+
+[node name="DialoguePlayer" parent="NPC" instance=ExtResource( 4 )]
+dialogue_file = "res://dialogue/dialogue_data/level_1b/npc_switch_off.json"
+
+[node name="DialoguePlayer_switch_on" parent="NPC" instance=ExtResource( 4 )]
+dialogue_file = "res://dialogue/dialogue_data/level_1b/npc_switch_on.json"
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 104, 192 )
+is_fire_use = false
+[connection signal="switched_on" from="Switch" to="." method="_on_Switch_switched_on"]
