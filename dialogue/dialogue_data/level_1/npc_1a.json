@@ -1,29 +1,32 @@
 [
   [
-	{"name": "NPC", "text": "There is no time to lose!"},
-	{"name": "NPC", "text": "You need to rescue your wife!"},
-	{"name": "NPC", "text": "Let me make the story short… A long long time ago, something between fifty minutes and one hour, when I was singing over the rainbow and I imagined that all people are living for today..."},
-	{"name": "NPC", "text": "ORC TOOK YOUR WIFE FROM THE TOWER!"},
-	{"name": "NPC", "text": "Go and rescue her!"}
+    {"name": "NPC", "text": "There is no time to lose!"},
+    {"name": "NPC", "text": "You need to rescue your wife!"},
+    {"name": "NPC", "text": "Let me make the story short… A long long time ago, something between fifty minutes and one hour, when I was singing over the rainbow and I imagined that all people are living for today..."},
+    {"name": "NPC", "text": "ORC TOOK YOUR WIFE FROM THE TOWER!"},
+    {"name": "NPC", "text": "Go and rescue her!"}
   ],
   [
-	{"name": "NPC", "text": "There is no time to lose! Go and rescue her!"}
+	  {"name": "NPC", "text": "There is no time to lose! Go and rescue her!"}
   ],
   [
-	{"name": "NPC", "text": "Really? Why are you still here?"}
+	  {"name": "NPC", "text": "..."}
   ],
   [
-	{"name": "NPC", "text": "Ok, fine… We can stand here and nothing probably will happen, because it’s only a game…"}
+	  {"name": "NPC", "text": "Really? Why are you still here?"}
   ],
   [
-	{"name": "NPC", "text": "or… maybe something will happen?"}
+	  {"name": "NPC", "text": "Ok, fine… We can stand here and nothing probably will happen, because it’s only a game…"}
   ],
   [
-	{"name": "NPC", "text": "I left the iron on ... How do I go to tomorrow's party? Eh, maybe let's go ahead and save your wife ... Remember what I said?"},
-	{"name": "NPC", "text": "THE ORK TOOK HER!"}
+	  {"name": "NPC", "text": "or… maybe something will happen?"}
   ],
   [
-	{"name": "NPC", "text": "Ok, fine. Let’s wait..."}
+	  {"name": "NPC", "text": "I left the iron on... How do I go to tomorrow's party? Eh, maybe let's go ahead and save your wife... Remember what I said?"},
+	  {"name": "NPC", "text": "THE ORK TOOK HER!"}
+  ],
+  [
+	  {"name": "NPC", "text": "Ok, fine. Let’s wait..."}
   ]
   
 ]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/ogre_basic.png" type="Texture" id=2]
@@ -9,11 +9,15 @@
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5, 7 )
+extents = Vector2( 3, 4 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( -30, 0, -5, -20, 100, -40, 100, 40, -5, 20 )
 
 [node name="Enemy" type="KinematicBody2D"]
+z_index = 1
 collision_layer = 2
-collision_mask = 31
+collision_mask = 22
 script = ExtResource( 4 )
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
@@ -44,5 +48,17 @@ position = Vector2( 2, -7 )
 enabled = true
 cast_to = Vector2( 7, 0 )
 collision_mask = 14
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2( 1, -8 )
+shape = SubResource( 3 )
+
+[node name="RayToPlayer" type="RayCast2D" parent="."]
+collision_mask = 4
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
 
 [editable path="Character"]

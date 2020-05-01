@@ -69,7 +69,7 @@ scale = Vector2( 3.40522, 1 )
 texture = ExtResource( 5 )
 
 [node name="NPC" parent="." instance=ExtResource( 6 )]
-position = Vector2( 222, 111 )
+position = Vector2( 171, 65 )
 
 [node name="DialoguePlayer" parent="NPC" instance=ExtResource( 7 )]
 
@@ -78,5 +78,5 @@ position = Vector2( 115, 111 )
 is_start_left = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 164, 127 )
+position = Vector2( 126, 74 )
 scale = Vector2( 0.993809, 1 )

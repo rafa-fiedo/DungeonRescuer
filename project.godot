@@ -8,15 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "BasicUseArea2D",
+"language": "GDScript",
+"path": "res://scenes/enviroment/BasicUseArea2D.gd"
+} ]
 _global_script_class_icons={
-
+"BasicUseArea2D": ""
 }
 
 [application]
 
 config/name="Dungeon Fighter"
-run/main_scene="res://scenes/levels/Level1.tscn"
+run/main_scene="res://scenes/levels/Level3.tscn"
 config/icon="res://icon.png"
 
 [autoload]

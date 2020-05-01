@@ -5,13 +5,18 @@ export(PackedScene) var next_scene = null
 func _ready():
 	pass
 
-func _on_Stairs_body_entered(body):
+func _on_Stairs_body_entered(_body):
 	if next_scene:
-		get_tree().change_scene_to(next_scene)
+		var err = get_tree().change_scene_to(next_scene)
+		if err == OK:
+			Global.reset_saves()
+		else:
+			print("error loading stairs scene")
+		
 	else:
 		print("no scene detected")
 
-func _on_Stairs_body_exited(body):
+func _on_Stairs_body_exited(_body):
 	pass
 	
 func set_active(active):

@@ -1,0 +1,15 @@
+[
+  [
+	  {"name": "NPC", "text": "Watch out, the orcs are here. Use yours light to see them before they can see you!"},
+    {"name": "NPC", "text": "You can always just run forward. If you are lucky you will survive, the luck can also be a skill!"}
+  ],
+  [
+    {"name": "NPC", "text": "Do not try to approach them from behind, they have a good smell and eyes around the head. Maybe even one on behind."},
+	  {"name": "NPC", "text": "Run my friend run!"}
+  ],
+  [
+	  {"name": "NPC", "text": "Run my friend run! Good luck!"}
+  ]
+  
+]
+

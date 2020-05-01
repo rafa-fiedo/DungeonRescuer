@@ -1,5 +1,8 @@
 extends Node
 
+var player_data = null
+var scene_checkpoint = null
+
 func _ready():
 	pass
 	
@@ -9,3 +12,17 @@ func _process(_delta):
 		# TODO error handle
 		var _result = get_tree().reload_current_scene()
 		print("scene restarted")
+
+func reset_data():
+	player_data = null
+	scene_checkpoint = null
+
+class PlayerData:
+	var _position = Vector2.ZERO
+	var _spell_fire_avaliable = false
+	
+	func _init(position, spell_fire_avaliable):
+		_position = position
+		_spell_fire_avaliable = spell_fire_avaliable
+	
+	

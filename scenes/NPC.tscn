@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/NPC.gd" type="Script" id=3]
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -20,7 +20,7 @@ script = ExtResource( 3 )
 [node name="Character" parent="." instance=ExtResource( 2 )]
 
 [node name="Sprite" parent="Character" index="0"]
-material = SubResource( 4 )
+material = SubResource( 1 )
 texture = ExtResource( 1 )
 frame = 2
 

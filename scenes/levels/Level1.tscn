@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/enviroment/BasicTilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=2]
@@ -7,6 +7,54 @@
 [ext_resource path="res://scenes/enviroment/Stairs.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/levels/Level1b.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/levels/Level1.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "EndAnimation"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 3.4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 3.4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 3.4 )
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reload_scene"
+} ]
+}
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 7 )
@@ -27,3 +75,12 @@ dialogue_file = "res://dialogue/dialogue_data/level_1/npc_1a.json"
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 104, 176 )
 is_fire_use = false
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/EndAnimation = SubResource( 1 )
+[connection signal="last_dialogue_finished" from="NPC/DialoguePlayer" to="." method="_on_DialoguePlayer_last_dialogue_finished"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]

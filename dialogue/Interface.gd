@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 export(float) var character_speed = 0.05
 
@@ -8,9 +8,9 @@ var waiting_for_any_key = false
 signal next_dialogue
 
 func _ready():
-	hide()
+	$NinePatchRect.hide()
 	
-func _process(delta):
+func _process(_delta):
 
 	if waiting_for_any_key:
 		if Input.is_action_just_pressed("game_use") || Input.is_action_just_pressed("game_shoot"):
@@ -23,7 +23,7 @@ func _process(delta):
 	
 	
 func show_dialogue(text):
-	show()
+	$NinePatchRect.show()
 	character_visible = 0
 	$AnimationPlayer.play("Idle")
 	$NinePatchRect/Text.visible_characters = 0
