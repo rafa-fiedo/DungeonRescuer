@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/enviroment/BasicTilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=2]
@@ -11,13 +11,15 @@
 [ext_resource path="res://scenes/enviroment/enemies/EnemyCollision.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/levels/Level3.gd" type="Script" id=10]
 [ext_resource path="res://scenes/UI/TutorialBox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/levels/Level4.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/enviroment/Skull.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 40, -8, 0, 0, 0, 0, -32, -8, 0, 0, 0, 0, -64, -48 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "LightShake"
 tracks/0/type = "value"
 tracks/0/path = NodePath("StatueEffect/Sprite:visible")
@@ -32,15 +34,15 @@ tracks/0/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Shake"
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0 )
 colors = PoolColorArray( 0.737255, 0.737255, 0.737255, 0.533333 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
 [node name="Level3" type="Node2D"]
 script = ExtResource( 10 )
@@ -53,6 +55,7 @@ position = Vector2( -80, 32 )
 
 [node name="Stairs" parent="." instance=ExtResource( 5 )]
 position = Vector2( 696, -280 )
+next_scene = ExtResource( 12 )
 
 [node name="NPC" parent="." instance=ExtResource( 2 )]
 position = Vector2( 200, 208 )
@@ -137,13 +140,16 @@ is_moving = false
 
 [node name="TutorialBox" parent="." instance=ExtResource( 11 )]
 
+[node name="Skull" parent="." instance=ExtResource( 13 )]
+position = Vector2( -53, 23 )
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( -72, 88 )
 is_fire_use = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/LightShake = SubResource( 3 )
-anims/Shake = SubResource( 4 )
+anims/LightShake = SubResource( 2 )
+anims/Shake = SubResource( 3 )
 
 [node name="StatueEffect" type="CanvasLayer" parent="."]
 
@@ -151,7 +157,7 @@ anims/Shake = SubResource( 4 )
 visible = false
 position = Vector2( 240, 136 )
 scale = Vector2( 0.238281, 272 )
-texture = SubResource( 2 )
+texture = SubResource( 5 )
 [connection signal="npc_walked" from="." to="." method="_on_Level3_npc_walked"]
 [connection signal="player_use" from="Statue" to="." method="_on_Statue_player_use"]
 [connection signal="dialogue_finished" from="Path2D/PathFollow2D/NPC_after_power_up/DialoguePlayer" to="." method="_on_DialoguePlayer_dialogue_finished"]

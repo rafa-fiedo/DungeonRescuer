@@ -35,5 +35,5 @@ anims/Idle = SubResource( 1 )
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-texture_scale = 3.0
+texture_scale = 3.5
 mode = 2

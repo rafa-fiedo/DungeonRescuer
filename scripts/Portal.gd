@@ -9,7 +9,7 @@ func _on_Stairs_body_entered(_body):
 	if next_scene:
 		var err = get_tree().change_scene_to(next_scene)
 		if err == OK:
-			Global.reset_saves()
+			Global.reset_data()
 		else:
 			print("error loading stairs scene")
 		

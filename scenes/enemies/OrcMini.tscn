@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/ogre_basic.png" type="Texture" id=2]
+[ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/ogre_mini.png" type="Texture" id=2]
 [ext_resource path="res://resources/lights/basic_circle.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=4]
 
@@ -9,32 +9,33 @@
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3, 4 )
+extents = Vector2( 3, 3 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( -30, 0, -5, -20, 100, -40, 100, 40, -5, 20 )
+[sub_resource type="CircleShape2D" id=3]
+radius = 50.0
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="OrcMini" type="KinematicBody2D"]
 z_index = 2
 collision_layer = 2
 collision_mask = 22
 script = ExtResource( 4 )
+speed = 48.0
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
-position = Vector2( -1, 0 )
+position = Vector2( -1, 2 )
 
 [node name="Sprite" parent="Character" index="0"]
 material = SubResource( 1 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -8 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
 position = Vector2( 1.83516, -8.56411 )
 texture = ExtResource( 3 )
-color = Color( 0.231373, 0.309804, 0.219608, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -6 )
 shape = SubResource( 2 )
 
 [node name="RayLeft" type="RayCast2D" parent="."]
@@ -53,7 +54,7 @@ collision_mask = 14
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2( 1, -8 )
+position = Vector2( 0, -6 )
 shape = SubResource( 3 )
 
 [node name="RayToPlayer" type="RayCast2D" parent="."]

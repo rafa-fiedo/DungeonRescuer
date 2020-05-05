@@ -20,8 +20,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Dungeon Fighter"
-run/main_scene="res://scenes/levels/Level3.tscn"
+config/name="Dungeon Rescuer"
+run/main_scene="res://scenes/levels/Level5.tscn"
 config/icon="res://icon.png"
 
 [autoload]

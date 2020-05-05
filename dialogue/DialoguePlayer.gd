@@ -74,3 +74,7 @@ func load_dialogue():
 	if file.file_exists(dialogue_file):
 		file.open(dialogue_file, file.READ)
 		return parse_json(file.get_as_text())
+
+func set_last_dialogue():
+	var dialogues = load_dialogue()
+	current_dialogue_id = len(dialogues) - 1

@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var fireball = load("res://scenes/spells/Fireball.tscn")
 
 export(bool) var is_fire_use = false
+export(bool) var god_mode = false
 
 signal fire_used
 
@@ -139,7 +140,9 @@ func set_active(active):
 	set_process_input(active)
 
 func die():
-	z_index = 0
+	if god_mode:
+		return
+	z_index = 1
 	state = State.DEAD
 	$Character.die_animation()
 	$Weapon/AnimationPlayer.play("Die")

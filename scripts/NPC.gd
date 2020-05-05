@@ -55,6 +55,10 @@ func turn_to_player(player_node):
 		last_flip = $Character/Sprite.flip_h 
 		$Character/Sprite.flip_h = true if player_node.global_position.x < global_position.x else false
 
+func play_animation(animation):
+	if has_node("Character"):
+		$Character.play_animation(animation)
+
 func reset_flip():
 	if has_node("Character"):
 		$Character/Sprite.flip_h = last_flip
@@ -64,4 +68,7 @@ func turn_around():
 		$Character/Sprite.flip_h = !$Character/Sprite.flip_h
 
 func activate():
+	call_deferred("active_deferred")
+
+func active_deferred():
 	$CollisionShape2D.disabled = false

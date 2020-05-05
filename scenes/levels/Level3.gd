@@ -18,6 +18,7 @@ func _ready():
 		$Path2D/PathFollow2D.unit_offset = 1
 		$Path2D/PathFollow2D/NPC_after_power_up.visible = true
 		$Path2D/PathFollow2D/NPC_after_power_up.activate()
+		$Path2D/PathFollow2D/NPC_after_power_up.turn_around()
 		$Statue.is_used = true
 		
 
@@ -56,7 +57,9 @@ func _process(delta):
 	
 	if npc_walking:
 		$Path2D/PathFollow2D.unit_offset += delta / walk_speed_npc
+		$Path2D/PathFollow2D/NPC_after_power_up.play_animation("Run")
 		
 		if($Path2D/PathFollow2D.unit_offset >= 1):
 			emit_signal("npc_walked")
+			$Path2D/PathFollow2D/NPC_after_power_up.play_animation("Idle")
 		

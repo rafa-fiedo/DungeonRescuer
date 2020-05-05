@@ -33,3 +33,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _physics_process(_delta):
 	velocity =  move_and_slide(velocity)
 
+func _on_EnemyDetector_body_entered(body):
+	if body.has_method("die"):
+		body.call_die()
+		
+	call_deferred("die")

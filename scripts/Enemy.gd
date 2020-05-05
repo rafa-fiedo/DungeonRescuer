@@ -6,6 +6,7 @@ export(bool) var is_moving = true
 export(bool) var start_left = true
 export(float) var speed = 32 # pixel per seconds
 export(bool) var delete_him = false
+export(bool) var moving_vertical = false
 
 var state = State.MOVE
 var velocity = Vector2(0, 0)
@@ -15,7 +16,12 @@ var started_velocity = Vector2(0, 0)
 
 func _ready():
 	if is_moving:
-		velocity = Vector2(speed, 0)
+		if moving_vertical:
+			velocity = Vector2(0, speed)
+			$RayLeft.rotate(deg2rad(90))
+			$RayRight.rotate(deg2rad(90))
+		else:
+			velocity = Vector2(speed, 0)
 		
 	if start_left:
 		velocity.x = -velocity.x
@@ -40,9 +46,15 @@ func _physics_process(_delta):
 	set_sprites()
 	
 	if $RayLeft.is_colliding():
-		velocity = Vector2(1, 0) * speed
+		if moving_vertical:
+			velocity = Vector2(0, 1) * speed
+		else:
+			velocity = Vector2(1, 0) * speed
 	if $RayRight.is_colliding():
-		velocity = Vector2(-1, 0) * speed
+		if moving_vertical:
+			velocity = Vector2(0, -1) * speed
+		else:
+			velocity = Vector2(-1, 0) * speed
 		
 	var bodies = $PlayerDetector.get_overlapping_bodies()
 	if len(bodies) > 0:
@@ -78,10 +90,15 @@ func attack():
 	return 1
 	
 func die():
+	if state == State.STOP:
+		return 
 	state = State.STOP
 	$CollisionShape2D.disabled = true
 	$RayLeft.enabled = false
 	$RayRight.enabled = false
+	$RayToPlayer.enabled = false
+	$PlayerDetector.monitorable = false
+	$PlayerDetector.monitoring = false
 	$Character.die_animation()
 
 func call_die():
