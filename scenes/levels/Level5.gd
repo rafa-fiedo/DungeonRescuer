@@ -5,9 +5,13 @@ export(PackedScene) var box_scene = null
 
 var box_opened = 0
 
+var player_has_key = false
+
 func _ready():
 	randomize()
-	print(randi() % 344)
+	
+	$Skull.visible = false
+	
 	
 	# random mini orc places
 	for positions in $enemies/left_corridor.get_children():
@@ -32,4 +36,40 @@ func _ready():
 
 func _on_Box_box_opened(box):
 	box.open_box(box_opened)
+	if box_opened == 0:
+		$Player.speed_up_fire()
+	
+	if box_opened == 2:
+		player_has_key = true
+		$Skull.activate()
+		$Skull.visible = true
+		$torches/Torch.queue_free()
+		$torches/Torch2.queue_free()
+	
 	box_opened += 1
+
+func _on_trigger_right_corridor_body_entered(body):
+	if has_node("BasicTilemap2"):
+		$BasicTilemap2.queue_free()
+
+func _on_trigger_right_corridor_unlock_player_use():
+	if has_node("BasicTilemap2"):
+		$BasicTilemap2.queue_free()
+
+
+func _on_Doors_try_open_door():
+	if player_has_key:
+		$Doors.open_door()
+		if has_node("BlackSpriteAfterDoors"):
+			$BlackSpriteAfterDoors.queue_free()
+
+
+func _on_trigger_boss_room_entry_body_entered(body):
+	$BlockBossTilemap.visible = true
+	$BlockBossTilemap.set_collision_layer_bit(2, true)
+	if has_node("BasicTilemap"):
+		$BasicTilemap.queue_free()
+
+
+func _on_trigger_test_boss_body_entered(body):
+	$Player.speed_up_fire()

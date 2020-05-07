@@ -2,6 +2,10 @@ extends StaticBody2D
 
 enum BoxFilling {Potion, Empty, Key} # count matters
 
+var potion_dialogue = "res://dialogue/dialogue_data/level_5/box_potion.json"
+var empty_dialogue = "res://dialogue/dialogue_data/level_5/box_empty.json"
+var key_dialogue = "res://dialogue/dialogue_data/level_5/box_key.json"
+
 signal box_opened
 
 var is_opened = false
@@ -19,7 +23,12 @@ func _input(event):
 func open_box(box_filling):
 	if box_filling == BoxFilling.Key:
 		$AnimationPlayer.play("BoxKey")
+		$DialoguePlayer.dialogue_file = key_dialogue
 	elif box_filling == BoxFilling.Potion:
 		$AnimationPlayer.play("BoxPotion")
+		$DialoguePlayer.dialogue_file = potion_dialogue
 	else:
 		$AnimationPlayer.play("BoxEmpty")
+		$DialoguePlayer.dialogue_file = empty_dialogue
+		
+	$DialoguePlayer.start_dialogue()

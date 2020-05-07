@@ -25,6 +25,8 @@ var spell_casting = false # to pretend spelling after dialog box
 
 var hit_points = 1
 
+var fire_speed_up = false
+
 func _ready():
 	offset_weapon_point = $Weapon.offset
 	start_fire_light_size = $Weapon/FireLight.texture_scale
@@ -112,7 +114,10 @@ func create_spell_1(spell_power_percent):
 			spell.rotation = $Weapon.rotation
 			get_parent().add_child(spell)
 			spell_reload = true
-			$SpellReloading.play("ReloadFire")
+			if fire_speed_up:
+				$SpellReloading.play("ReloadFire", -1, 2.0)
+			else:
+				$SpellReloading.play("ReloadFire")
 			emit_signal("fire_used")
 	
 	spell_casting = false
@@ -138,6 +143,9 @@ func set_active(active):
 	set_physics_process(active)
 	set_process(active)
 	set_process_input(active)
+	
+func speed_up_fire():
+	fire_speed_up = true
 
 func die():
 	if god_mode:

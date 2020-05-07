@@ -27,7 +27,7 @@ func show_dialogue(text):
 	character_visible = 0
 	$AnimationPlayer.play("Idle")
 	$NinePatchRect/Text.visible_characters = 0
-	$NinePatchRect/Text.text = text
+	$NinePatchRect/Text.bbcode_text = text
 	$CharacterSpeed.start(character_speed)
 
 func _on_CharacterSpeed_timeout():

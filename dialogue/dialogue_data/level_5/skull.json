@@ -1,11 +1,5 @@
 [
   [
-    {"name": "NPC", "text": "Surprise!"},
-    {"name": "NPC", "text": "Your progress have been saved. In other words you have activated checkpoint."},
-    {"name": "NPC", "text": "Funny fact... It was activated before you interacted with me."},
-    {"name": "NPC", "text": "There is trigger near by me."}
-  ],
-  [
     {"name": "NPC", "text": "Checkpoint activated."}
   ]
   
