@@ -144,7 +144,7 @@ is_moving = false
 position = Vector2( -53, 23 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -72, 88 )
+position = Vector2( 32, 216 )
 is_fire_use = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

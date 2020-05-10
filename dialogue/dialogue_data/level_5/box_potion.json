@@ -1,6 +1,6 @@
 [
   [
-	  {"name": "NPC", "text": "After drinking it you feel much [wave amp=25 freq=2]faster[/wave]."}
+	  {"name": "NPC", "text": "You found a potion. After drinking it your magic skill are much [wave amp=25 freq=2]faster[/wave]."}
   ]
   
 ]

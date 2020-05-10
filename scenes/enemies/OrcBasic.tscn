@@ -17,7 +17,7 @@ points = PoolVector2Array( -30, 0, -5, -20, 100, -40, 100, 40, -5, 20 )
 [node name="Enemy" type="KinematicBody2D"]
 z_index = 2
 collision_layer = 2
-collision_mask = 22
+collision_mask = 6
 script = ExtResource( 4 )
 
 [node name="Character" parent="." instance=ExtResource( 1 )]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/wife_animation.png" type="Texture" id=2]
+[ext_resource path="res://scripts/NPC.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 8 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 2
+
+[sub_resource type="Animation" id=3]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Run"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[node name="Wife" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, -9 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 0, -16 )
+texture = ExtResource( 2 )
+hframes = 9
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 3 )
+anims/Run = SubResource( 4 )
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2( 0, -7 )
+shape = SubResource( 5 )
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]

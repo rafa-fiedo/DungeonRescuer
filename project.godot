@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Dungeon Rescuer"
-run/main_scene="res://scenes/levels/Level5.tscn"
+run/main_scene="res://scenes/levels/Level1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -130,6 +130,7 @@ restart={
 2d_physics/layer_3="enviroment"
 2d_physics/layer_4="enemy_collisions"
 2d_physics/layer_5="npc"
+2d_physics/layer_6="trap"
 
 [rendering]
 

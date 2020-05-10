@@ -1,12 +1,13 @@
 [
   [
-    {"name": "NPC", "text": "Wait...     \nfor...     \nme...      \n"},
-    {"name": "NPC", "text": "Do you want to kill that orc alone? I think that we are close to that big ugly orc which kidnaped your wife."},
-    {"name": "NPC", "text": "Hope that he won't have a lot of wardens."}
-  ],
-  [
-    {"name": "NPC", "text": "Hope that he won't have a lot of wardens."}
+    {"name": "NPC", "text": "Hahaha, it's time for the plot twist."},
+    {"name": "NPC", "text": "I kidnapped your wife!"},
+    {"name": "NPC", "text": "Did you ever think why I know this dungeon so well? Did you ever think where am I on this level? Did you miss me? "},
+    {"name": "NPC", "text": "Hm?"},
+    {"name": "NPC", "text": "And you don't ever talking to me!"},
+    {"name": "NPC", "text": "I always wanted to have a wife, so... I took yours!"},
+    {"name": "NPC", "text": "Now it's time for you to disappear from this world and show to your/mine wife that you are dead!"},
+    {"name": "NPC", "text": "Say hi to \"Tiny\"."}
   ]
-  
 ]
 

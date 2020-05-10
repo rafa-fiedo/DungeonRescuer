@@ -23,9 +23,14 @@ var state = State.MOVING
 var spell_reload = false
 var spell_casting = false # to pretend spelling after dialog box
 
+var pos_to_go = null # used for cutscenes
+var pos_index = -1
+
 var hit_points = 1
 
 var fire_speed_up = false
+
+signal walked_to_position
 
 func _ready():
 	offset_weapon_point = $Weapon.offset
@@ -44,12 +49,29 @@ func _physics_process(_delta):
 	if state == State.DEAD:
 		return
 	set_sprites() # set marker, char sprite and collision boxes
+	
+	if pos_to_go:
+		velocity = global_position.direction_to(pos_to_go) * speed
+	
+		if global_position.distance_to(pos_to_go) < 1:
+			pos_to_go = null
+			emit_signal("walked_to_position", pos_index) # pos_index
+			set_active(false)
+		
+		velocity = move_and_slide(velocity)
+		return
+	
 	var direction = get_direction()
 	velocity = speed * direction
 	
 	spells_logic()
 	$Character.set_moving_animation(velocity)
 	velocity = move_and_slide(velocity)
+	
+func set_position_to_move(pos_node):
+	pos_to_go = pos_node.global_position
+	pos_index = pos_node.get_instance_id()
+	set_process_input(true)
 	
 func get_direction():
 	return Vector2(
@@ -172,11 +194,13 @@ func get_center():
 func get_save_data():
 	return Global.PlayerData.new(
 		global_position,
-		is_fire_use
+		is_fire_use,
+		fire_speed_up
 	)
 
 func load_data(player_data : Global.PlayerData):
 	global_position = player_data._position
 	is_fire_use = player_data._spell_fire_avaliable
+	fire_speed_up = player_data._fire_speed_up
 
 

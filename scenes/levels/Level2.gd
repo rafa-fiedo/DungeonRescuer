@@ -3,8 +3,9 @@ extends Node2D
 export(PackedScene) var enemy_orc_scene = null
 
 func _ready():
-	if Global.check_point:
-		$Player.position = Global.check_point
+	if Global.player_data:
+		$Player.load_data(Global.player_data)
+		
 
 func _on_timer_timeout():
 	var enemy = enemy_orc_scene.instance()
@@ -24,4 +25,4 @@ func _on_Switch_switched_on():
 	
 
 func _on_Checkpoint_body_entered(body):
-	Global.check_point = body.global_position
+	Global.player_data = body.get_save_data()

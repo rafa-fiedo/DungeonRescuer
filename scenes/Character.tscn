@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/mage_animations.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Character.gd" type="Script" id=2]
@@ -261,6 +261,21 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "Hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.294118 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.27451 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Character" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -277,3 +292,6 @@ anims/Die = SubResource( 2 )
 anims/Hit = SubResource( 3 )
 anims/Idle = SubResource( 4 )
 anims/Run = SubResource( 5 )
+
+[node name="AnimHit" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 6 )

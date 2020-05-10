@@ -9,10 +9,16 @@ var current_dialogue_node_name = "DialoguePlayer"
 var last_flip = is_start_left
 
 func _ready():
+	if has_node("Sprite"):
+		$Sprite.flip_h = is_start_left
+		
 	if has_node("Character"):
 		$Character/Sprite.flip_h = is_start_left
 		
 	$CollisionShape2D.disabled = deactivate
+	
+	set_process_input(!deactivate)
+	set_process(!deactivate)
 	
 	# connecting signals 
 	for child in get_children():
@@ -51,24 +57,54 @@ func _process(_delta):
 			print("No dialogue node in this NPC")
 
 func turn_to_player(player_node):
+	if has_node("Sprite"):
+		last_flip = $Sprite.flip_h 
+		$Sprite.flip_h = true if player_node.global_position.x < global_position.x else false
+	
 	if has_node("Character"):
 		last_flip = $Character/Sprite.flip_h 
 		$Character/Sprite.flip_h = true if player_node.global_position.x < global_position.x else false
 
 func play_animation(animation):
+	if has_node("Sprite"):
+		pass
+		
 	if has_node("Character"):
 		$Character.play_animation(animation)
 
 func reset_flip():
+	if has_node("Sprite"):
+		$Sprite.flip_h = last_flip
+		
 	if has_node("Character"):
 		$Character/Sprite.flip_h = last_flip
 
 func turn_around():
+	if has_node("Sprite"):
+		$Sprite.flip_h = !$Sprite.flip_h
+		
 	if has_node("Character"):
 		$Character/Sprite.flip_h = !$Character/Sprite.flip_h
 
 func activate():
 	call_deferred("active_deferred")
-
+	set_process_input(true)
+	set_process(true)
+	visible = true
+	
+func deactivate():
+	call_deferred("active_deferred2")
+	set_process_input(false)
+	set_process(false)
+	visible = true
+	
 func active_deferred():
 	$CollisionShape2D.disabled = false
+	
+func active_deferred2():
+	$CollisionShape2D.disabled = true
+	
+# TODO refactor and delete it because last wife is using it after game over
+func load_scene_after_black():
+	pass
+

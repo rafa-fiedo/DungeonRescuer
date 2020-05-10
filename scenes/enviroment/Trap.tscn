@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/enviroment/trap.png" type="Texture" id=1]
 [ext_resource path="res://scenes/enviroment/Trap.gd" type="Script" id=2]
@@ -8,6 +8,36 @@ light_mode = 2
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 3 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "turn_off_collision"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 2.0
@@ -42,6 +72,9 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 6 )
+
 [node name="Trap" type="Area2D"]
 collision_layer = 0
 collision_mask = 3
@@ -58,6 +91,14 @@ position = Vector2( 8, -10 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
+anims/Hide = SubResource( 4 )
 anims/Idle = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 8, -10 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="." to="." method="_on_Trap_body_entered"]

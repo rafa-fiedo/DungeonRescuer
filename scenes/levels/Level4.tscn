@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/enviroment/BasicTilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scenes/enviroment/Torch.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/enemies/OrcBasic.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/levels/trigger_hidden_passage.gd" type="Script" id=15]
+[ext_resource path="res://scenes/levels/Level5.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -43,6 +44,7 @@ tile_data = PoolIntArray( 131086, 0, 0, 131087, 0, 1, 131088, 0, 1, 131089, 0, 1
 
 [node name="Stairs" parent="." instance=ExtResource( 5 )]
 position = Vector2( 264, -104 )
+next_scene = ExtResource( 16 )
 
 [node name="Skull" parent="." instance=ExtResource( 8 )]
 position = Vector2( 747, 126 )
@@ -70,7 +72,10 @@ dialogue_file = "res://dialogue/dialogue_data/level_4/board_1.json"
 [node name="enemy_collisions" type="Node" parent="."]
 
 [node name="EnemyCollision2" parent="enemy_collisions" instance=ExtResource( 9 )]
-position = Vector2( 272, -80 )
+position = Vector2( 256, -80 )
+
+[node name="EnemyCollision4" parent="enemy_collisions" instance=ExtResource( 9 )]
+position = Vector2( 256, -88 )
 
 [node name="EnemyCollision3" parent="enemy_collisions" instance=ExtResource( 9 )]
 position = Vector2( 424, -80 )
@@ -98,7 +103,7 @@ position = Vector2( 736, -40 )
 is_moving = false
 
 [node name="Enemy" parent="enemies" instance=ExtResource( 14 )]
-position = Vector2( 312, -80 )
+position = Vector2( 312, -72 )
 
 [node name="npcs" type="Node" parent="."]
 

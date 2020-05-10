@@ -20,9 +20,11 @@ func reset_data():
 class PlayerData:
 	var _position = Vector2.ZERO
 	var _spell_fire_avaliable = false
+	var _fire_speed_up = false
 	
-	func _init(position, spell_fire_avaliable):
+	func _init(position, spell_fire_avaliable, fire_speed_up):
 		_position = position
 		_spell_fire_avaliable = spell_fire_avaliable
+		_fire_speed_up = fire_speed_up
 	
 	

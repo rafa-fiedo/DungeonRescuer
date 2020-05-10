@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/enviroment/BasicTilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/enemies/OrcBasic.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/enviroment/enemies/EnemyCollision.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/levels/Level2.gd" type="Script" id=10]
+[ext_resource path="res://scenes/levels/Level3.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
@@ -100,6 +101,7 @@ collision_layer = 12
 [node name="Stairs" parent="." instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 296, -56 )
+next_scene = ExtResource( 11 )
 
 [node name="NPC" parent="." instance=ExtResource( 2 )]
 position = Vector2( 72, 216 )

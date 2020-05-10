@@ -37,7 +37,7 @@ func _on_trigger1_body_entered(_body):
 func _on_trigger_change_map_body_entered(_body):
 	replace_map()
 	$npcs/NPC_nearEnd.visible = true
-	$npcs/NPC_nearEnd.activate()
+	# $npcs/NPC_nearEnd.activate()
 	$npcs/Path2D/PathFollow2D/NPC_First.queue_free()
 	
 func replace_map():
@@ -50,3 +50,4 @@ func replace_map():
 func _on_trigger_hidden_passage_use_signal():
 	replace_map()
 	$triggers/trigger_hidden_passage.queue_free()
+	$npcs/NPC_nearEnd.queue_free()
