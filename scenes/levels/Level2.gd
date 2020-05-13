@@ -3,6 +3,8 @@ extends Node2D
 export(PackedScene) var enemy_orc_scene = null
 
 func _ready():
+	MusicController.play_background()
+	SceneTranslator.play("InitOfScene")
 	if Global.player_data:
 		$Player.load_data(Global.player_data)
 		

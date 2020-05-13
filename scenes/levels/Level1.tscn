@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/enviroment/BasicTilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://scenes/levels/Level1b.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/levels/Level1.gd" type="Script" id=7]
 [ext_resource path="res://scenes/TurnToBlackScene.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/UI/EndScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/UI/EndScreen2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/UI/TutorialBox.tscn" type="PackedScene" id=10]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 7 )
@@ -36,5 +37,13 @@ wait_time = 2.0
 one_shot = true
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 8 )]
+
+[node name="TutorialBox" parent="." instance=ExtResource( 10 )]
+
+[node name="TutorialShow" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+[connection signal="dialogue_started" from="NPC/DialoguePlayer" to="." method="_on_DialoguePlayer_dialogue_started"]
 [connection signal="last_dialogue_finished" from="NPC/DialoguePlayer" to="." method="_on_DialoguePlayer_last_dialogue_finished"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]
+[connection signal="timeout" from="TutorialShow" to="." method="_on_TutorialShow_timeout"]

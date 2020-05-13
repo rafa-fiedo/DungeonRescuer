@@ -14,7 +14,13 @@ var velocity = Vector2(0, 0)
 var started_pos = Vector2(0, 0) # position to back after chase is failed
 var started_velocity = Vector2(0, 0)
 
+var play_sound = false
+
 func _ready():
+	randomize()
+	if has_node("SoundAnimationTimer"):
+		$SoundAnimationTimer.start(randf())
+	
 	if is_moving:
 		if moving_vertical:
 			velocity = Vector2(0, speed)
@@ -28,7 +34,13 @@ func _ready():
 		
 	if(delete_him):
 		queue_free()
-		
+
+func _on_Character_attack():
+	$AttackSound.play()
+
+func _on_SoundAnimationTimer_timeout():
+	play_sound = true
+
 func _on_PlayerDetector_body_entered(body):
 	started_pos = global_position # it's creating new vector
 	started_velocity = velocity
@@ -60,9 +72,13 @@ func _physics_process(_delta):
 	if len(bodies) > 0:
 		$RayToPlayer.cast_to = bodies[0].get_center() - $RayToPlayer.global_position
 	
+	var faster_run_sounds = false
 	if !$RayToPlayer.is_colliding() and len(bodies) > 0: # checking enviroment
 		state = State.CHASE
 		velocity = global_position.direction_to(bodies[0].get_center()) * speed * 2
+		if has_node("AnimationPlayer"):
+			$AnimationPlayer.playback_speed = 2.0
+			faster_run_sounds = true
 		
 	elif state == State.CHASE and started_pos:
 		if global_position.distance_to(started_pos) < 1:
@@ -78,8 +94,15 @@ func _physics_process(_delta):
 	else:
 		$RayLeft.enabled = true
 		$RayRight.enabled = true
-		
 	
+	if has_node("AnimationPlayer"):
+		if velocity.x != 0 and play_sound:
+			if $AnimationPlayer.current_animation != "Run":
+				$AnimationPlayer.play("Run") # only for audio
+				if !faster_run_sounds:
+					$AnimationPlayer.playback_speed = 1.0
+		else:
+			$AnimationPlayer.stop()
 
 	
 	velocity = move_and_slide(velocity)
@@ -115,4 +138,3 @@ func set_sprites():
 		$Character.get_node("Sprite").flip_h = true
 		$CollisionShape2D.position.x = -2
 		$PlayerDetector/CollisionShape2D.rotation_degrees = 180
-

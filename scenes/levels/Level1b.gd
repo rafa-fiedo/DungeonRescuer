@@ -2,6 +2,8 @@ extends Node2D
 
 
 func _ready():
+	SceneTranslator.play("InitOfScene")
+	MusicController.play_background()
 	$Stairs.set_active(false)
 
 func _on_Switch_switched_on():

@@ -20,6 +20,9 @@ func _input(event):
 		emit_signal("box_opened", $".")
 		is_opened = true
 		
+func _on_SoundTimer_timeout():
+	$Sound.play()
+		
 func open_box(box_filling):
 	if box_filling == BoxFilling.Key:
 		$AnimationPlayer.play("BoxKey")
@@ -30,5 +33,7 @@ func open_box(box_filling):
 	else:
 		$AnimationPlayer.play("BoxEmpty")
 		$DialoguePlayer.dialogue_file = empty_dialogue
+	
+	$SoundTimer.start(0.1)
 		
 	$DialoguePlayer.start_dialogue()

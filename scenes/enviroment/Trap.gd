@@ -1,6 +1,7 @@
 extends Area2D
 
 export(bool) var working = true
+export(bool) var disable_sound = false
 
 func _ready():
 	if working:
@@ -9,6 +10,8 @@ func _ready():
 func turn_on_collisions():
 	monitoring = true
 	monitorable = true
+	if !disable_sound:
+		$Sound.play()
 	
 func turn_off_collision():
 	monitoring = false

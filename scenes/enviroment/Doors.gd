@@ -10,5 +10,7 @@ func _input(event):
 		emit_signal("try_open_door")
 
 func open_door():
+	$Sound.play()
 	$Sprite.frame = 1
+	z_index = 10
 	$CollisionShape2D.disabled = true

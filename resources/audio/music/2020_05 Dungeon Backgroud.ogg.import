@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/2020_05 Dungeon Backgroud.ogg-346e750ffa0319b7634b5daf5f77239f.oggstr"
+
+[deps]
+
+source_file="res://resources/audio/music/2020_05 Dungeon Backgroud.ogg"
+dest_files=[ "res://.import/2020_05 Dungeon Backgroud.ogg-346e750ffa0319b7634b5daf5f77239f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

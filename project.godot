@@ -20,13 +20,16 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Dungeon Rescuer"
-run/main_scene="res://scenes/levels/Level1.tscn"
+config/name="Mage in the dungeon"
+run/main_scene="res://scenes/UI/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://scripts/global_scripts/Global.gd"
+MusicController="*res://autoloads/MusicController.tscn"
+SceneTranslator="*res://autoloads/SceneTranslator.tscn"
+Pause="*res://scenes/UI/Pause.tscn"
 
 [display]
 
@@ -117,6 +120,11 @@ use_spell_1={
 restart={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+game_pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
 

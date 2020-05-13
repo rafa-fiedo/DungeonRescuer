@@ -4,6 +4,7 @@ onready var fireball = load("res://scenes/spells/Fireball.tscn")
 
 export(bool) var is_fire_use = false
 export(bool) var god_mode = false
+export(bool) var disable = false
 
 signal fire_used
 
@@ -36,6 +37,8 @@ func _ready():
 	offset_weapon_point = $Weapon.offset
 	start_fire_light_size = $Weapon/FireLight.texture_scale
 	set_sprites()
+	if disable:
+		set_active(false)
 	
 func _on_EnemyDetector_body_entered(body):
 	var damage = body.attack()
@@ -87,9 +90,12 @@ func spells_logic():
 		spell_casting = true
 	
 	if Input.is_action_pressed("use_spell_1") and spell_casting:
+		if current_spell == Spell.FIRE:
+			$SpellSound.fire_loading()
 		spell_power = min(spell_power + 0.015, 1.0)
 		$Weapon/FireLight.texture_scale = start_fire_light_size * (1.0 - (spell_power / 2.0))
 	elif Input.is_action_just_released("use_spell_1") and spell_casting:
+		$SpellSound.stop()
 		create_spell_1(spell_power)
 		spell_power = 0
 		$Weapon/FireLight.texture_scale = start_fire_light_size * (1.0 - (spell_power / 2.0))
@@ -141,6 +147,9 @@ func create_spell_1(spell_power_percent):
 			else:
 				$SpellReloading.play("ReloadFire")
 			emit_signal("fire_used")
+			
+			$Camera2D.shake_it(Vector2(0, 3 * spell_power_percent).rotated(spell.rotation))
+			$SpellSound.fire_fire()
 	
 	spell_casting = false
 	
@@ -162,6 +171,10 @@ func set_sprites():
 		$CollisionShape2D.position.x = -1
 		
 func set_active(active):
+	if !active:
+		$Character.play_animation("Idle")
+		$SpellSound.stop()
+	
 	set_physics_process(active)
 	set_process(active)
 	set_process_input(active)
@@ -172,10 +185,12 @@ func speed_up_fire():
 func die():
 	if god_mode:
 		return
+	$SpellSound.stop()
 	z_index = 1
 	state = State.DEAD
 	$Character.die_animation()
 	$Weapon/AnimationPlayer.play("Die")
+	SceneTranslator.play("EndOfScene")
 	yield($Character.find_node("Anim"), "animation_finished")
 	# yield(get_tree().create_timer(1.0), "timeout")
 	var err = get_tree().reload_current_scene()

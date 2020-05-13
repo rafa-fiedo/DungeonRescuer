@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/big_orc.png" type="Texture" id=2]
 [ext_resource path="res://resources/lights/basic_circle.png" type="Texture" id=3]
 [ext_resource path="res://scenes/enemies/OrcBoss.gd" type="Script" id=4]
+[ext_resource path="res://resources/audio/sound_effects/enemies/atack_low.wav" type="AudioStream" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 2
@@ -47,6 +48,10 @@ shape = SubResource( 3 )
 
 [node name="Center" type="Position2D" parent="."]
 position = Vector2( 0, -14 )
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+[connection signal="attack" from="Character" to="." method="_on_Character_attack"]
 [connection signal="area_entered" from="TrapDetector" to="." method="_on_TrapDetector_area_entered"]
 [connection signal="area_exited" from="TrapDetector" to="." method="_on_TrapDetector_area_exited"]
 

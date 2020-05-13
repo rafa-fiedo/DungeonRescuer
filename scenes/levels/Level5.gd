@@ -9,6 +9,8 @@ var box_opened = 0
 var player_has_key = false
 
 func _ready():
+	MusicController.play_background()
+	SceneTranslator.play("InitOfScene")
 	randomize()
 	
 	if Global.player_data:
@@ -22,8 +24,6 @@ func _ready():
 		$Skull.visible = true
 		$torches/Torch.queue_free()
 		$torches/Torch2.queue_free()
-	
-
 	
 	for trap in $trapes/boss.get_children():
 		trap.visible = false
@@ -58,6 +58,7 @@ func _on_Boss_die():
 		trap.stop_trap()
 		trap.visible = false
 	
+	MusicController.play_victory()
 	$Player.set_position_to_move($positions/PosToGoAfterBoss)
 
 func _on_Box_box_opened(box):
@@ -107,6 +108,8 @@ func _on_Wife_DialoguePlayer_last_dialogue_finished():
 	$npcs/Path2D.start_path()
 	$npcs/Path2D/PathFollow2D/NPC.visible = true
 	
+	MusicController.play_battle()
+	
 	$npcs/Wife/DialoguePlayer.queue_free()
 
 func _on_Path2D_path_ended():
@@ -117,7 +120,7 @@ func _on_Path2D_path_ended():
 func _on_DialoguePlayer_dialogue_finished():
 	$Player.set_active(true)
 	$Boss.active()
-	$npcs/Path2D/PathFollow2D/NPC.deactivate()
+	$npcs/Path2D/PathFollow2D/NPC.deactivate_it()
 	
 	for torch in $torches/boss_torches.get_children():
 		torch.visible = true
@@ -158,7 +161,7 @@ func _on_TurnOffLight_timeout():
 	for torch in $torches/boss_torches.get_children():
 		torch.visible = false
 		
-func _on_CheckpointBeforeBoss_body_entered(body):
+func _on_CheckpointBeforeBoss_body_entered(_body):
 	if player_has_key:
 		Global.player_data = $Player.get_save_data()
 		Global.scene_checkpoint = 1

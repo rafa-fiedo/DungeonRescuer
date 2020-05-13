@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/UI/TextButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/UI/Pause.gd" type="Script" id=2]
+[ext_resource path="res://resources/ui/transparent_black.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 1
+
+[node name="Pause" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.444
+anchor_right = 0.5
+anchor_bottom = 0.444
+margin_left = -64.0
+margin_top = 8.11999
+margin_right = 64.0
+margin_bottom = 24.12
+bbcode_text = "[center]Menu"
+text = "Menu"
+
+[node name="Continue" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.563
+anchor_right = 0.5
+anchor_bottom = 0.563
+margin_left = -64.0
+margin_top = -0.0100098
+margin_right = 64.0
+margin_bottom = 15.99
+bbcode_text = "[center]Continue"
+text = "Continue"
+[connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]

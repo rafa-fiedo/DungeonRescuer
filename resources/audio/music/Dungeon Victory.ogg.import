@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dungeon Victory.ogg-e1411286f42121a3c66cdc5b4a585eb9.oggstr"
+
+[deps]
+
+source_file="res://resources/audio/music/Dungeon Victory.ogg"
+dest_files=[ "res://.import/Dungeon Victory.ogg-e1411286f42121a3c66cdc5b4a585eb9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

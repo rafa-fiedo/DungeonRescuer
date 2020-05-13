@@ -1,5 +1,7 @@
 extends Node2D
 
+signal attack
+
 func _ready():
 	pass
 

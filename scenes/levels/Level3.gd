@@ -9,6 +9,8 @@ var count_fires = false
 var fired_used = 0
 
 func _ready():
+	MusicController.play_background()
+	SceneTranslator.play("InitOfScene")
 	$Path2D/PathFollow2D.unit_offset = 0
 	
 	if Global.player_data:

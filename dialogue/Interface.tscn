@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/theme/font/BasicFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://dialogue/Interface.gd" type="Script" id=2]
 [ext_resource path="res://resources/theme/panel/panel_rect.png" type="Texture" id=3]
+[ext_resource path="res://resources/audio/sound_effects/keys/3.wav" type="AudioStream" id=4]
 [ext_resource path="res://resources/theme/wait_arrow.png" type="Texture" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -157,4 +158,10 @@ __meta__ = {
 autoplay = "PressKey"
 anims/Idle = SubResource( 4 )
 anims/PressKey = SubResource( 5 )
+
+[node name="CharacterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -6.0
+pitch_scale = 0.74
+bus = "Keys"
 [connection signal="timeout" from="CharacterSpeed" to="." method="_on_CharacterSpeed_timeout"]

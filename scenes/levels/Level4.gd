@@ -2,6 +2,9 @@ extends Node2D
 
 
 func _ready():
+	MusicController.play_background()
+	SceneTranslator.play("InitOfScene")
+	
 	if Global.player_data:
 		$Player.load_data(Global.player_data)
 		
@@ -37,7 +40,7 @@ func _on_trigger1_body_entered(_body):
 func _on_trigger_change_map_body_entered(_body):
 	replace_map()
 	$npcs/NPC_nearEnd.visible = true
-	# $npcs/NPC_nearEnd.activate()
+	$npcs/NPC_nearEnd.activate()
 	$npcs/Path2D/PathFollow2D/NPC_First.queue_free()
 	
 func replace_map():

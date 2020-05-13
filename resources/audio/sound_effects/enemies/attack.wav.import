@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/attack.wav-fb03fbecd24c6e376e7468e662dc7844.sample"
+
+[deps]
+
+source_file="res://resources/audio/sound_effects/enemies/attack.wav"
+dest_files=[ "res://.import/attack.wav-fb03fbecd24c6e376e7468e662dc7844.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

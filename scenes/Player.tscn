@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/lights/basic_circle.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/weapons/stuffs.png" type="Texture" id=4]
+[ext_resource path="res://scenes/SpellSound.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Camera2D.gd" type="Script" id=6]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.0397351, 0.728477 )
@@ -127,6 +129,7 @@ color = Color( 0.278431, 0.278431, 0.278431, 1 )
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+script = ExtResource( 6 )
 
 [node name="EnemyDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -139,6 +142,10 @@ shape = SubResource( 4 )
 
 [node name="SpellReloading" type="AnimationPlayer" parent="."]
 anims/ReloadFire = SubResource( 5 )
+
+[node name="SpellSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = 3.0
+script = ExtResource( 5 )
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
 
 [editable path="Character"]

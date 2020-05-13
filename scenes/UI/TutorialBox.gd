@@ -17,6 +17,28 @@ func hide():
 	
 func hide_using_animation():
 	$AnimationPlayer.play("FadeOut")
+	
+func show_first_tutorial():
+	if used:
+		return
+	
+	Input.is_action_just_pressed("game_up")
+	
+	var move_keys = OS.get_scancode_string(InputMap.get_action_list("game_up")[0].scancode) + "," \
+		+ OS.get_scancode_string(InputMap.get_action_list("game_left")[0].scancode) + "," \
+		+ OS.get_scancode_string(InputMap.get_action_list("game_down")[0].scancode) + "," \
+		+ OS.get_scancode_string(InputMap.get_action_list("game_right")[0].scancode)
+		
+	var interact_key = OS.get_scancode_string(InputMap.get_action_list("game_use")[0].scancode)
+	
+	var text = "[center]Use [color=#4ba747]" + move_keys + "[/color]" + ' to move \n' \
+			+ "[center]Use [color=#4ba747]" + interact_key + "[/color]" + ' to interact with NPC and objects) \n'
+			
+	$NinePatchRect/RichTextLabel.bbcode_text = text
+	
+	$NinePatchRect.visible = true
+	$AnimationPlayer.play("FadeIn")
+	used = true
 
 func show_spells_tutorial():
 	if used:

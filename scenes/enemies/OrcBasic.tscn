@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/0x72_DungeonTilesetII_v1.3/sheet_sprites/ogre_basic.png" type="Texture" id=2]
 [ext_resource path="res://resources/lights/basic_circle.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=4]
+[ext_resource path="res://resources/audio/sound_effects/walking/orc_2.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/audio/sound_effects/walking/orc_1.wav" type="AudioStream" id=6]
+[ext_resource path="res://resources/audio/sound_effects/enemies/atack_low.wav" type="AudioStream" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 2
@@ -13,6 +16,27 @@ extents = Vector2( 3, 4 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( -30, 0, -5, -20, 100, -40, 100, 40, -5, 20 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Run"
+tracks/0/type = "audio"
+tracks/0/path = NodePath("Sound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0, 0.5 )
+}
 
 [node name="Enemy" type="KinematicBody2D"]
 z_index = 2
@@ -58,7 +82,23 @@ shape = SubResource( 3 )
 
 [node name="RayToPlayer" type="RayCast2D" parent="."]
 collision_mask = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Run = SubResource( 4 )
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = 8.0
+max_distance = 200.0
+area_mask = 2
+
+[node name="SoundAnimationTimer" type="Timer" parent="."]
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+[connection signal="attack" from="Character" to="." method="_on_Character_attack"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
+[connection signal="timeout" from="SoundAnimationTimer" to="." method="_on_SoundAnimationTimer_timeout"]
 
 [editable path="Character"]

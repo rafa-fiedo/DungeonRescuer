@@ -10,7 +10,7 @@ var velocity = Vector2(0, 0)
 var started_pos = Vector2(0, 0) # position to back after chase is failed
 var started_velocity = Vector2(0, 0)
 
-var max_hp = 134.0
+var max_hp = 144.0
 var hp = max_hp
 
 signal die
@@ -29,6 +29,9 @@ func _on_TrapDetector_area_entered(area):
 
 func _on_TrapDetector_area_exited(area):
 	area.get_parent().start_trap()
+	
+func _on_Character_attack():
+	$AttackSound.play()
 
 func _physics_process(_delta):
 	if state == State.STOP:
@@ -87,4 +90,5 @@ func set_sprites():
 	else:
 		$Character.get_node("Sprite").flip_h = true
 		$CollisionShape2D.position.x = -2
+
 

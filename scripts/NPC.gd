@@ -22,7 +22,7 @@ func _ready():
 	
 	# connecting signals 
 	for child in get_children():
-		if child.name.match("DialoguePlayer"):
+		if "DialoguePlayer" in child.name:
 			child.connect("dialogue_started", self, "start_dialogue")
 			child.connect("dialogue_finished", self, "finish_dialogue")
 
@@ -92,7 +92,7 @@ func activate():
 	set_process(true)
 	visible = true
 	
-func deactivate():
+func deactivate_it():
 	call_deferred("active_deferred2")
 	set_process_input(false)
 	set_process(false)

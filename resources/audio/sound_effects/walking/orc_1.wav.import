@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/orc_1.wav-d6303b76408d93ce3fe795f5bfd664c3.sample"
+
+[deps]
+
+source_file="res://resources/audio/sound_effects/walking/orc_1.wav"
+dest_files=[ "res://.import/orc_1.wav-d6303b76408d93ce3fe795f5bfd664c3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

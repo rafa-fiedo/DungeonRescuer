@@ -32,6 +32,9 @@ _data = {
 
 [node name="Level4" type="Node2D"]
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="BasicTilemap" parent="." instance=ExtResource( 1 )]
 position = Vector2( -16, -160 )
@@ -262,7 +265,7 @@ script = ExtResource( 15 )
 shape = SubResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 40, 48 )
+position = Vector2( 24, 56 )
 [connection signal="body_entered" from="checkpoints/check_2" to="." method="_on_check_2_body_entered"]
 [connection signal="dialogue_finished" from="npcs/NPC_nearEnd/DialoguePlayer" to="." method="_on_DialoguePlayer_dialogue_finished"]
 [connection signal="path_ended" from="npcs/Path2D" to="." method="_on_Path2D_path_ended"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/ui/selector.png" type="Texture" id=1]
+[ext_resource path="res://resources/theme/font/BasicFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/UI/TextButton.gd" type="Script" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
+
+[node name="TextButton" type="RichTextLabel"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 200.0
+margin_top = 130.0
+margin_right = -200.0
+margin_bottom = -126.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Start Game"
+text = "Start Game"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGame" type="TextureButton" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_hover = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="StartGame" to="." method="_on_StartGame_pressed"]
