@@ -1,7 +1,7 @@
 [
   [
 	  {"name": "NPC", "text": "Great! We are on the next level of the dungeon. Go and find your destiny!"},
-    {"name": "NPC", "text": "The next room has several possibilities, you can use hit and miss method, or go to the left corridor."}
+    {"name": "NPC", "text": "The next room has several possibilities, you can use sneak around, or go to the left corridor."}
   ],
   [
 	  {"name": "NPC", "text": "The next room has several possibilities, don't go to the right corridor. It's like a bad joke to me."}

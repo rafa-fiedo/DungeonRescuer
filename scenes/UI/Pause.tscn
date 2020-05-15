@@ -44,5 +44,18 @@ margin_right = 64.0
 margin_bottom = 15.99
 bbcode_text = "[center]Continue"
 text = "Continue"
+
+[node name="FullScreen" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.563
+anchor_right = 0.5
+anchor_bottom = 0.563
+margin_left = -64.0
+margin_top = -144.01
+margin_right = 64.0
+margin_bottom = -128.01
+bbcode_text = "[center]Toggle Fullscreen"
+text = "Toggle Fullscreen"
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="FullScreen" to="." method="_on_FullScreen_pressed"]

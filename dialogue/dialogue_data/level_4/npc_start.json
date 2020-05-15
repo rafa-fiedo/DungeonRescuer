@@ -1,11 +1,11 @@
 [
   [
     {"name": "NPC", "text": "Wait...     \nfor...     \nme...      \n"},
-    {"name": "NPC", "text": "Do you want to kill that orc alone? I think that we are close to that big ugly orc which kidnaped your wife."},
-    {"name": "NPC", "text": "Hope that he won't have a lot of wardens."}
+    {"name": "NPC", "text": "Do you want to kill that orc alone? I think that we are close to the big ugly orc which kidnaped your wife."},
+    {"name": "NPC", "text": "I hope that he doesn't have a lot of defenders."}
   ],
   [
-    {"name": "NPC", "text": "Hope that he won't have a lot of wardens."}
+    {"name": "NPC", "text": "I hope that he doesn't have a lot of defenders."}
   ]
   
 ]

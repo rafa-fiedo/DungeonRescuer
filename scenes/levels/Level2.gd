@@ -7,6 +7,8 @@ func _ready():
 	SceneTranslator.play("InitOfScene")
 	if Global.player_data:
 		$Player.load_data(Global.player_data)
+	
+	$Stairs.visible = false
 		
 
 func _on_timer_timeout():

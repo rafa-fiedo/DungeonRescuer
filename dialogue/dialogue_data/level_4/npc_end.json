@@ -1,7 +1,7 @@
 [
   [
-    {"name": "NPC", "text": "Ah... \nI forgot to tell you about a secret brick that is unlocking a hidden passage. It was behind the little orc."},
-    {"name": "NPC", "text": "Don't look at me with this look."},
+    {"name": "NPC", "text": "Ah... \nI forgot to tell you about a secret brick that unlocks a hidden passage. It was behind the little orc."},
+    {"name": "NPC", "text": "Don't look at me with that look."},
     {"name": "NPC", "text": "These stairs are looking promising. Let's go!"}
   ],
   [

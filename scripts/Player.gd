@@ -159,9 +159,9 @@ func set_sprites():
 	
 	var screen_pos = get_global_transform_with_canvas().origin
 	var weapon_angle = (screen_pos + offset_weapon_point).angle_to_point(mouse_p)
+	# print(screen_pos, mouse_p)
 	
 	$Weapon.rotation = weapon_angle - deg2rad(90)
-	# $SpellEffect.position = offset_weapon_point + spell_effect_vec.rotated(weapon_angle - deg2rad(90))
 	
 	if mouse_p.x > screen_pos.x:
 		$Character.get_node("Sprite").flip_h = false

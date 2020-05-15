@@ -1,24 +1,62 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/theme/font/BasicFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/UI/EndScreen.gd" type="Script" id=2]
+[ext_resource path="res://resources/theme/font/Lato/Lato-BoldItalic.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+extra_spacing_space = 2
+font_data = ExtResource( 3 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 240.0 ]
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 152.0
-margin_top = 120.0
-margin_right = 336.0
-margin_bottom = 144.0
+margin_left = 88.0
+margin_top = 48.0
+margin_right = 392.0
+margin_bottom = 272.0
+custom_fonts/bold_font = SubResource( 1 )
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center]Thanks for playing!"
-text = "Thanks for playing!"
+bbcode_text = "[center][b]Thanks for playing![/b]
+
+Game made by:
+SheetCode
+
+Special Thanks for:
+My Girlfriend for testing and huge support
+[CANA]Dan for testing and dialogue corrections
+Bartek for testing
+
+
+Follow me on:
+[url=\"https://www.youtube.com/channel/UCT09eC0fDd3a3Nx9X7QQ9Aw\"]YouTube[/url]
+[url=\"https://twitter.com/sheetcodedev\"]Twitter[/url]
+[url=\"https://www.instagram.com/sheetcodedev/\"]Instagram[/url]"
+text = "Thanks for playing!
+
+Game made by:
+SheetCode
+
+Special Thanks for:
+My Girlfriend for testing and huge support
+[CANA]Dan for testing and dialogue corrections
+Bartek for testing
+
+
+Follow me on:
+YouTube
+Twitter
+Instagram"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="meta_clicked" from="RichTextLabel" to="." method="_on_RichTextLabel_meta_clicked"]

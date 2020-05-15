@@ -1,11 +1,10 @@
 [
   [
 	  {"name": "NPC", "text": "Wooow!"},
-    {"name": "NPC", "text": "You have found a fire potion statue. Now the orc will be nothing for you."}
+    {"name": "NPC", "text": "You have found a fire potion statue. Now the orcs will be nothing before you!"}
   ],
   [
 	  {"name": "NPC", "text": "Let's go to the next level!"}
   ]
   
 ]
-

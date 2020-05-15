@@ -9,10 +9,15 @@ var battle_music = load("res://resources/audio/music/2020_05 Dungeon Fighter loo
 # Victories Music
 var victory_music = load("res://resources/audio/music/Dungeon Victory.ogg")
 
+var mute = false
+
 func _ready():
 	pass
 
 func play_background():
+	if mute:
+		return
+		
 	if $Music.stream == background_music and $Music.playing:
 		return
 	
@@ -20,10 +25,14 @@ func play_background():
 	$Music.play()
 
 func play_battle():
+	if mute:
+		return
 	$Music.stream = battle_music
 	$Music.play()
 	
 func play_victory():
+	if mute:
+		return
 	$Music.stream = victory_music
 	$Music.play()
 
