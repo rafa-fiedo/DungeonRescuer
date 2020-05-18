@@ -19,7 +19,7 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 88.0
-margin_top = 48.0
+margin_top = 40.0
 margin_right = 392.0
 margin_bottom = 272.0
 custom_fonts/bold_font = SubResource( 1 )
@@ -28,33 +28,35 @@ bbcode_enabled = true
 bbcode_text = "[center][b]Thanks for playing![/b]
 
 Game made by:
-SheetCode
+Rafał Fiedorowicz (SheetCode)
 
 Special Thanks for:
 My Girlfriend for testing and huge support
 [CANA]Dan for testing and dialogue corrections
 Bartek for testing
-
+Jasemir for testing
+0x72 for great assets (Dungeon tileset 2)
 
 Follow me on:
-[url=\"https://www.youtube.com/channel/UCT09eC0fDd3a3Nx9X7QQ9Aw\"]YouTube[/url]
-[url=\"https://twitter.com/sheetcodedev\"]Twitter[/url]
-[url=\"https://www.instagram.com/sheetcodedev/\"]Instagram[/url]"
+[url=\"https://www.youtube.com/channel/UCT09eC0fDd3a3Nx9X7QQ9Aw\"]YouTube - SheetCode[/url]
+[url=\"https://twitter.com/sheetcodedev\"]Twitter/SheetCodeDev[/url]
+[url=\"https://www.instagram.com/sheetcodedev/\"]Instagram/SheetCodeDev[/url]"
 text = "Thanks for playing!
 
 Game made by:
-SheetCode
+Rafał Fiedorowicz (SheetCode)
 
 Special Thanks for:
 My Girlfriend for testing and huge support
 [CANA]Dan for testing and dialogue corrections
 Bartek for testing
-
+Jasemir for testing
+0x72 for great assets (Dungeon tileset 2)
 
 Follow me on:
-YouTube
-Twitter
-Instagram"
+YouTube - SheetCode
+Twitter/SheetCodeDev
+Instagram/SheetCodeDev"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

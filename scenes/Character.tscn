@@ -327,7 +327,6 @@ position = Vector2( 0, -2 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -14 )
 hframes = 9
-frame = 4
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 autoplay = "Idle"

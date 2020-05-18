@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Mage in the dungeon"
+config/name="Dungeon Rescuer"
 run/main_scene="res://scenes/UI/Menu.tscn"
 config/icon="res://icon.png"
 
